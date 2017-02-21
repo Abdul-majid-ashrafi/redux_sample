@@ -1,20 +1,66 @@
 import { createStore } from 'redux'
-console.log(87879)
+// FIRST EXAMPLE
+
+// const initialState = {
+//     result: 3,
+//     lastValues: []
+// }
+// const reducer = (state = initialState, action) => {
+//     switch (action.type) {
+//         case "ADD":
+//             state.result += action.value
+//             break;
+//         case "REM":
+//             state = state - action.value
+//             break;
+//     }
+//     return state
+// }
+// const store = createStore(reducer)
+
+// store.subscribe(() => {
+//     console.log("Updated", store.getState())
+// })
+// store.dispatch({
+//     type: "ADD",
+//     value: 100
+// })
+// store.dispatch({
+//     type: "ADD",
+//     value: 22
+// })
+// store.dispatch({
+//     type: "REM",
+//     value: 22
+// })
+
+
+
+
+
+// SECOND EXAMPLE
 
 const initialState = {
     result: 3,
-    lastValues: []
+    lastValues: [],
+    name: "Majid"
 }
 const reducer = (state = initialState, action) => {
     switch (action.type) {
         case "ADD":
-            state.result += action.value
-            // console.log(state)
+            state = {
+                result: state.result + action.value,               //   this is muteable
+                lastValues: [...state.lastValues, action.value]
+            }
+            // state.lastValues.push(action.value)
+            // state.result += action.value
             break;
         case "REM":
-            state = state - action.value
+            state = {
+                result: state.result - action.value,               //   this is muteable
+                lastValues: [...state.lastValues, action.value]
+            }
             break;
-        // default: return state
     }
     return state
 }
@@ -22,7 +68,6 @@ const store = createStore(reducer)
 
 store.subscribe(() => {
     console.log("Updated", store.getState())
-    // console.log("store", store)
 })
 store.dispatch({
     type: "ADD",
@@ -34,5 +79,5 @@ store.dispatch({
 })
 store.dispatch({
     type: "REM",
-    value: 22
-})
+    value: 19
+})  
