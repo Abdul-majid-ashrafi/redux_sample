@@ -1,8 +1,8 @@
-export const reducer = (
-    state = {
-        result: 3,
-        lastValues: []
-    }, action) => {
+let initialState = {
+    result: 3,
+    lastValues: []
+}
+export const reducer = (state = initialState, action) => {
     switch (action.type) {
         case "ADD":
             state = {
@@ -19,10 +19,10 @@ export const reducer = (
             }
             break;
     }
-    return state
+    return state;
 }
 
-
+// ============================= second reducer=======================
 export const userReducer = (
     state = {
         name: "Majid ",
@@ -42,5 +42,5 @@ export const userReducer = (
             }
             break;
     }
-    return state
+    return state;
 }
